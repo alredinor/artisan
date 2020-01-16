@@ -1,11 +1,35 @@
 package jpa.model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="compte")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@SequenceGenerator(name="seqCompte", sequenceName="seq_compte", initialValue = 1, allocationSize = 1)
+@DiscriminatorColumn(name="type_compte",discriminatorType = DiscriminatorType.STRING, length=1)
 public class Compte {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqCompte")
 	private Long idCompte;
+	@Column(name="login", length=150)
 	private String login;
+	@Column(name="mdp", length=150)
 	private String mdp;
+	@Column(name="mail", length=255)
 	private String email;
+	@Embedded
 	private Adresse adresse;
 	//private String typeCompte;
 	

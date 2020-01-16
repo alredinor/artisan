@@ -1,8 +1,17 @@
 package jpa.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="metier")
 public class Metier 
 {
+	@Id
 	private Long idMetier;
+	@Column(name="titre_metier", length=150)
 	private String titreMetier;
 	
 	public Metier() 
