@@ -3,6 +3,8 @@ package jpa.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import jpa.model.Metier;
 import jpa.util.JpaContext;
@@ -11,7 +13,7 @@ public class DaoMetierJpaImpl implements DaoMetier
 {
 
 	@Override
-	public Metier findBykey(Long key) 
+	public Metier findBykey(Long key)
 	{
 		EntityManager em = JpaContext.getInstance().createEntityManager();	
 		Metier p = null;
@@ -21,38 +23,114 @@ public class DaoMetierJpaImpl implements DaoMetier
 	}
 
 	@Override
-	public List<Metier> findAll() 
+	public List<Metier> findAll()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = JpaContext.getInstance().createEntityManager();
+		List<Metier> metiers = null;
+		Query query = em.createQuery("from Metier m");
+		metiers = query.getResultList();
+		em.close();
+		return metiers;
 	}
 
 	@Override
-	public void insert(Metier obj) 
+	public void insert(Metier obj)
 	{
-		// TODO Auto-generated method stub
+		EntityManager em = JpaContext.getInstance().createEntityManager();
+		EntityTransaction tx = null;
+
+		try 
+		{
+			tx = em.getTransaction();
+			tx.begin();
+			em.persist(obj);
+			tx.commit();
+		}
+		catch(Exception e) 
+		{
+			if(tx != null && tx.isActive())
+			{
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(em != null && em.isOpen())
+			{
+				em.close();
+			}
+		}
 		
 	}
 
 	@Override
 	public Metier update(Metier obj)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = JpaContext.getInstance().createEntityManager();
+		EntityTransaction tx = null;
+		Metier m = null;
+
+		try 
+		{
+			tx = em.getTransaction();
+			tx.begin();
+			m = em.merge(obj);
+			tx.commit();
+		}
+		catch(Exception e) 
+		{
+			if(tx != null && tx.isActive())
+			{
+				tx.rollback();
+				e.printStackTrace();
+			}
+		}
+		finally
+		{
+			if(em != null && em.isOpen())
+			{
+				em.close();
+			}
+		}
+		return m;
 	}
 
 	@Override
-	public void delete(Metier obj) 
+	public void delete(Metier obj)
 	{
-		// TODO Auto-generated method stub
+		EntityManager em = JpaContext.getInstance().createEntityManager();
+		EntityTransaction tx = null;
+
+		try 
+		{
+			tx = em.getTransaction();
+			tx.begin();
+			em.remove(em.merge(obj));
+			tx.commit();
+		}
+		catch(Exception e) 
+		{
+			if(tx != null && tx.isActive())
+			{
+				tx.rollback();
+				e.printStackTrace();
+			}
+		}
+		finally
+		{
+			if(em != null && em.isOpen())
+			{
+				em.close();
+			}
+		}
 		
 	}
 
 	@Override
-	public void deleteByKey(Long key) 
+	public void deleteByKey(Long key)
 	{
-		// TODO Auto-generated method stub
-		
+		delete(findBykey(key));
 	}
 	
 }
