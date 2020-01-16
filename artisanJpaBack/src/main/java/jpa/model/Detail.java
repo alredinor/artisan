@@ -1,33 +1,31 @@
 package jpa.model;
 
 public class Detail {
-	private long idService;
-	private long idDemande;
+	
+	private DetailPK key;
 	private String statut;
 	
 	
 	public Detail() {
-		super();
+		
+	}
+
+	
+	
+	public Detail(DetailPK key, String statut) {
+		this.key = key;
+		this.statut = statut;
 	}
 
 
-	public long getIdService() {
-		return idService;
+
+	public DetailPK getKey() {
+		return key;
 	}
 
 
-	public void setIdService(long idService) {
-		this.idService = idService;
-	}
-
-
-	public long getIdDemande() {
-		return idDemande;
-	}
-
-
-	public void setIdDemande(long idDemande) {
-		this.idDemande = idDemande;
+	public void setKey(DetailPK key) {
+		this.key = key;
 	}
 
 
@@ -39,6 +37,7 @@ public class Detail {
 	public void setStatut(String statut) {
 		this.statut = statut;
 	}
+
 	
 	
 	
