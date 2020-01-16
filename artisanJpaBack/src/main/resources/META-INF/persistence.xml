@@ -7,7 +7,7 @@
 		<!-- implementation de jpa ici Hibernate-->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
-		<!-- <class>jpa.model.Personne</class> -->
+		<class>jpa.model.Compte</class>
 		
 		<properties>
 			<!-- driver -->
@@ -17,12 +17,12 @@
 			<!-- login -->
 			<property name="hibernate.connection.user" value="postgres"/>
 			<!-- password -->
-			<property name="hibernate.connection.password" value="postgres"/>
+			<property name="hibernate.connection.password" value="root"/>
 			<!-- dialect hibernate -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
 			<!-- gestion des tables -->
 			<!-- validate, create, create-drop, update -->
-			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 			
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>

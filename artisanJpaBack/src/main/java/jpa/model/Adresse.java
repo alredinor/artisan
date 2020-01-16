@@ -3,7 +3,7 @@ package jpa.model;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-//@Embeddable
+@Embeddable
 public class Adresse {
 	
 	private Integer numero;
