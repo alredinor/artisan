@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import jpa.model.Compte;
 import jpa.util.JpaContext;
 
-public class DaoCompteJPAImpl implements DaoCompte{
+public class DaoCompteJpaImpl implements DaoCompte{
 
 	@Override
 	public Compte findByKey(Long key) {

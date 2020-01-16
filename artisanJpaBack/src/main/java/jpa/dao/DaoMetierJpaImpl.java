@@ -13,7 +13,7 @@ public class DaoMetierJpaImpl implements DaoMetier
 {
 
 	@Override
-	public Metier findBykey(Long key)
+	public Metier findByKey(Long key)
 	{
 		EntityManager em = JpaContext.getInstance().createEntityManager();	
 		Metier p = null;
@@ -130,7 +130,7 @@ public class DaoMetierJpaImpl implements DaoMetier
 	@Override
 	public void deleteByKey(Long key)
 	{
-		delete(findBykey(key));
+		delete(findByKey(key));
 	}
 	
 }

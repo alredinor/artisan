@@ -6,7 +6,7 @@ public class DaoCompteFactory {
 	
 	public static DaoCompte getInstance() {
 		if(daoCompte==null) {
-			daoCompte=new DaoCompteJPAImpl();
+			daoCompte=new DaoCompteJpaImpl();
 		}
 		return  daoCompte;
 	}
