@@ -14,11 +14,11 @@ public class TestNico {
 		DaoCompte daoCompte=DaoCompteFactory.getInstance();
 		
 		
-		Compte c= new Client();
-		c.setLogin("nico");
-		c.setMdp("2006");
-		daoCompte.insert(c);
-		
+//		Compte c= new Client();
+//		c.setLogin("nico");
+//		c.setMdp("2006");
+//		daoCompte.insert(c);
+//		
 		JpaContext.destroy();
 	}
 

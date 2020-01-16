@@ -2,36 +2,38 @@ package jpa.model;
 
 public class DemandePK {
 
-	private Service idService;
-	private Compte idClient;
-	private Compte idArtisan;
+	private Service service;
+	private Compte client;
+	private Compte artisan;
 	
 	public DemandePK() {
 	}
 
-	public Service getIdService() {
-		return idService;
+	public Service getService() {
+		return service;
 	}
 
-	public void setIdService(Service idService) {
-		this.idService = idService;
+	public void setService(Service service) {
+		this.service = service;
 	}
 
-	public Compte getIdClient() {
-		return idClient;
+	public Compte getClient() {
+		return client;
 	}
 
-	public void setIdClient(Compte idClient) {
-		this.idClient = idClient;
+	public void setClient(Compte client) {
+		this.client = client;
 	}
 
-	public Compte getIdArtisan() {
-		return idArtisan;
+	public Compte getArtisan() {
+		return artisan;
 	}
 
-	public void setIdArtisan(Compte idArtisan) {
-		this.idArtisan = idArtisan;
+	public void setArtisan(Compte artisan) {
+		this.artisan = artisan;
 	}
+
+	
 	
 	
 }

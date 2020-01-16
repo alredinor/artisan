@@ -1,6 +1,7 @@
 package jpa.model;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,8 +12,11 @@ public class Service {
 
 	@Id
 	private long idService;
+	@Column(name="nom_service")
+	private String nomService;
+	@Embedded
 	@Column(name="metier")
-	private String Metier;
+	private Metier Metier;
 
 
 
@@ -31,16 +35,24 @@ public Service() {
 	}
 
 
-	public String getMetier() {
+	public Metier getMetier() {
 		return Metier;
 	}
 
 
-	public void setMetier(String metier) {
+	public void setMetier(Metier metier) {
 		Metier = metier;
 	}
 
 
+
+	public String getNomService() {
+		return nomService;
+	}
+
+	public void setNomService(String nomService) {
+		this.nomService = nomService;
+	}
 
 	@Override
 	public int hashCode() {

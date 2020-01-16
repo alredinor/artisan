@@ -1,15 +1,17 @@
 package jpa.model;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name="metier")
+@Embeddable
 public class Metier 
 {
-	@Id
+//	@Id
 	private Long idMetier;
 	@Column(name="titre_metier", length=150)
 	private String titreMetier;
