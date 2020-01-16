@@ -1,5 +1,7 @@
 package jpa.dao;
 
-public class DaoCompte {
+import jpa.model.Compte;
+
+public interface DaoCompte extends DaoGeneric<Compte, Long> {
 
 }
