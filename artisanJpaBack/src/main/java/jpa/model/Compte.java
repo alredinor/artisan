@@ -7,19 +7,19 @@ public class Compte {
 	private String mdp;
 	private String email;
 	private Adresse adresse;
-	private String typeCompte;
+	//private String typeCompte;
 	
 	public Compte() {
 		
 	}
 
-	public Compte(String login, String mdp, String email, Adresse adresse, String typeCompte) {
+	public Compte(String login, String mdp, String email, Adresse adresse) {
 		super();
 		this.login = login;
 		this.mdp = mdp;
 		this.email = email;
 		this.adresse = adresse;
-		this.typeCompte = typeCompte;
+
 	}
 
 	public Long getIdCompte() {
@@ -62,13 +62,6 @@ public class Compte {
 		this.adresse = adresse;
 	}
 
-	public String getTypeCompte() {
-		return typeCompte;
-	}
-
-	public void setTypeCompte(String typeCompte) {
-		this.typeCompte = typeCompte;
-	}
 
 	@Override
 	public int hashCode() {
