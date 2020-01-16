@@ -31,17 +31,16 @@ public class Metier
 	}
 
 	@Override
-	public int hashCode() 
-	{
+	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((idMetier == null) ? 0 : idMetier.hashCode());
+		result = prime * result + ((titreMetier == null) ? 0 : titreMetier.hashCode());
 		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj) 
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -54,10 +53,12 @@ public class Metier
 				return false;
 		} else if (!idMetier.equals(other.idMetier))
 			return false;
+		if (titreMetier == null) {
+			if (other.titreMetier != null)
+				return false;
+		} else if (!titreMetier.equals(other.titreMetier))
+			return false;
 		return true;
 	}
-
-
-	
 	
 }
