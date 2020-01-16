@@ -2,7 +2,7 @@ package jpa.model;
 
 public class Service {
 private long idService;
-private long Metier;
+private Metier Metier;
 
 
 public Service() {
