@@ -12,7 +12,7 @@ import jpa.util.JpaContext;
 public class DaoServiceJpaImp implements DaoService{
 
 	@Override
-	public Service findByKey(Integer key) {
+	public Service findByKey(Long key) {
 		EntityManager em=JpaContext.getInstance().createEntityManager();
 		Service p=null;
 		p=em.find(Service.class, key); //on utilise une méthode qui existe déjà
@@ -95,7 +95,7 @@ public class DaoServiceJpaImp implements DaoService{
 	}
 
 	@Override
-	public void deleteByKey(Integer key) {
+	public void deleteByKey(Long key) {
 		delete(findByKey(key));
 		
 	}

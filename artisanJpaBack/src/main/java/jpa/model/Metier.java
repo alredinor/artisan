@@ -5,15 +5,20 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
+@SequenceGenerator(name="seqMetier", sequenceName="seq_metier", initialValue = 1, allocationSize = 1)
 @Table(name="metier")
 public class Metier
 {
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqMetier")
 	private Long idMetier;
 	@Column(name="titre_metier", length=150)
 	private String titreMetier;
