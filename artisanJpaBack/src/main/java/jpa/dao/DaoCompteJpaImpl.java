@@ -110,5 +110,13 @@ public class DaoCompteJpaImpl implements DaoCompte{
 		delete(findByKey(key));
 		
 	}
+	
+
+//	@Override
+//	public Compte checkConnect(Compte login, Long mdp) {
+//		
+//		return null;
+//	}
+
 
 }
