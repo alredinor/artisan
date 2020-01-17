@@ -1,5 +1,6 @@
 package jpa.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -16,12 +17,18 @@ public class Demande {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqDemande")
+	@Column(name="id_demande")
 	private Long idDemande;
 	private String message;
 	
 	@ManyToOne
-	@JoinColumn(name="id_compte", foreignKey = @ForeignKey(name="demande_compte_id_fk"))
-	private Compte compte;
+	@JoinColumn(name="id_artisan", foreignKey = @ForeignKey(name="demande_artisan_id_fk"))
+	private Compte artisan;
+	
+	@ManyToOne
+	@JoinColumn(name="id_client", foreignKey = @ForeignKey(name="demande_client_id_fk"))
+	private Compte client;
+	
 	
 	@OneToOne
 	@JoinColumn(name="id_service", foreignKey = @ForeignKey(name="demande_service_id_fk"))
@@ -34,15 +41,95 @@ public class Demande {
 	public Demande() {
 	}
 
+	
+
+	
+
 	public Long getIdDemande() {
 		return idDemande;
 	}
+
+
+
+
 
 	public void setIdDemande(Long idDemande) {
 		this.idDemande = idDemande;
 	}
 
+
+
+
+
 	
+
+
+
+
+
+	public Compte getArtisan() {
+		return artisan;
+	}
+
+
+
+
+
+	public void setArtisan(Compte artisan) {
+		this.artisan = artisan;
+	}
+
+
+
+
+
+	public Compte getClient() {
+		return client;
+	}
+
+
+
+
+
+	public void setClient(Compte client) {
+		this.client = client;
+	}
+
+
+
+
+
+	public Service getService() {
+		return service;
+	}
+
+
+
+
+
+	public void setService(Service service) {
+		this.service = service;
+	}
+
+
+
+
+
+	public Metier getMetier() {
+		return metier;
+	}
+
+
+
+
+
+	public void setMetier(Metier metier) {
+		this.metier = metier;
+	}
+
+
+
+
 
 	public String getMessage() {
 		return message;
