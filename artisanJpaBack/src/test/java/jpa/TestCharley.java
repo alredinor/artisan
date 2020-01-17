@@ -1,5 +1,7 @@
 package jpa;
 
+import jpa.dao.DaoArtisan;
+import jpa.dao.DaoArtisanFactory;
 import jpa.dao.DaoCompte;
 import jpa.dao.DaoCompteFactory;
 import jpa.dao.DaoMetier;
@@ -23,13 +25,14 @@ public class TestCharley
 		DaoCompte daoCompte=DaoCompteFactory.getInstance();
 		DaoService daoService=DaoServiceFactory.getInstance();
 		DaoMetier daoMetier=DaoMetierFactory.getInstance();
+		DaoArtisan daoArtisan = DaoArtisanFactory.getInstance();
 		
-		Service service= daoService.findByKey(2L);
-		System.out.println(service.getIdService());
-		System.out.println(service.getNomService());
-		
-		service.setMetier(daoMetier.findByKey(1L));
-		daoService.update(service);
+//		Service service= daoService.findByKey(2L);
+//		System.out.println(service.getIdService());
+//		System.out.println(service.getNomService());
+//		
+//		service.setMetier(daoMetier.findByKey(1L));
+//		daoService.update(service);
 //		
 //		Service s = new Service();
 //		Service s2 = new Service();
@@ -66,6 +69,8 @@ public class TestCharley
 //		daoMetier.insert(m);
 //		daoMetier.insert(m2);
 //		daoMetier.insert(m3);
+		
+		System.out.println(daoArtisan.findAllMetier());
 		
 		JpaContext.destroy();
 	}
