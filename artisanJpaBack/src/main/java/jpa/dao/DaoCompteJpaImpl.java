@@ -115,6 +115,9 @@ public class DaoCompteJpaImpl implements DaoCompte{
 //	@Override
 //	public Compte checkConnect(Compte login, Long mdp) {
 //		
+//		EntityManager em = JpaContext.getInstance().createEntityManager();
+//		List<Compte> comptes=null;
+//		Query query=em.createQuery("select c from Compte p where login=? and mdp=?");
 //		return null;
 //	}
 
