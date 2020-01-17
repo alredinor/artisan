@@ -1,37 +1,39 @@
 package jpa.dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-
+import jpa.model.Client;
 import jpa.model.Demande;
 import jpa.util.JpaContext;
 
-public class DaoDemandeJpaImpl implements DaoDemande{
+public class DaoClientJpaImpl implements DaoClient {
 
 	@Override
-	public Demande findByKey(Long key) {
+	public Client findByKey(Long key) {
+		
 		EntityManager em=JpaContext.getInstance().createEntityManager();
-		Demande d=null;
-		d=em.find(Demande.class, key);
+		Client c=null;
+		c=em.find(Client.class, key);
 		em.close();
-		return d;
+		return c;
 	}
 
 	@Override
-	public List<Demande> findAll() {
+	public List<Client> findAll() {
+		
 		EntityManager em=JpaContext.getInstance().createEntityManager();
-		List<Demande> demandes=null;
-		Query query=em.createQuery("select c from Demande c");
-		demandes=query.getResultList();
+		List<Client> clients=null;
+		Query query=em.createQuery("from Compte where type_compte='C'");
+		clients=query.getResultList();
 		em.close();
-		return demandes;
+		return clients;
 	}
 
 	@Override
-	public void insert(Demande obj) {
+	public void insert(Client obj) {
+		
 		EntityManager em=JpaContext.getInstance().createEntityManager();
 		EntityTransaction tx=null;
 		try {
@@ -57,14 +59,15 @@ public class DaoDemandeJpaImpl implements DaoDemande{
 	}
 
 	@Override
-	public Demande update(Demande obj) {
+	public Client update(Client obj) {
+		
 		EntityManager em=JpaContext.getInstance().createEntityManager();
 		EntityTransaction tx=null;
-		Demande d=null;
+		Client c=null;
 		try {
 			tx=em.getTransaction();
 			tx.begin();
-			d=em.merge(obj);
+			c=em.merge(obj);
 			tx.commit();
 
 		}catch(Exception e) {
@@ -79,12 +82,12 @@ public class DaoDemandeJpaImpl implements DaoDemande{
 				em.close();	
 			}
 		}
-		return d;
-		
+		return c;
 	}
 
 	@Override
-	public void delete(Demande obj) {
+	public void delete(Client obj) {
+		
 		EntityManager em=JpaContext.getInstance().createEntityManager();
 		EntityTransaction tx=null;
 		try {
@@ -111,18 +114,19 @@ public class DaoDemandeJpaImpl implements DaoDemande{
 
 	@Override
 	public void deleteByKey(Long key) {
+		
 		delete(findByKey(key));
 		
 	}
+
 	
 //	public List<Demande> findByAllDemande(String nom){
-//		
-//		EntityManager em=JpaContext.getInstance().createEntityManager();
-//		Query query=em.createQuery("select distinct f from Demande f ");
-//		query.setParameter("skill",nom);
-//		List<Demande> demandes=query.getResultList();
-//		em.close();
-//		return demandes;
+//	
+//	EntityManager em=JpaContext.getInstance().createEntityManager();
+//	Query query=em.createQuery("select f from Demande f ");
+//	query.setParameter("skill",nom);
+//	List<Demande> demandes=query.getResultList();
+//	em.close();
+//	return demandes;
 //	}
-
 }
