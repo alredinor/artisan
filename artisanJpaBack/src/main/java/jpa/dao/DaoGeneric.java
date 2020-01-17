@@ -9,5 +9,6 @@ public interface DaoGeneric<T,K> {
 	public T update(T obj);
 	public void delete(T obj);
 	public void deleteByKey(K key);
+	//public T checkConnect(T login,K mdp);
 
 }

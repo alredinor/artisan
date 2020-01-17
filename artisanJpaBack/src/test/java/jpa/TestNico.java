@@ -2,10 +2,15 @@ package jpa;
 
 import jpa.dao.DaoCompte;
 import jpa.dao.DaoCompteFactory;
+<<<<<<< HEAD
 import jpa.dao.DaoService;
 import jpa.dao.DaoServiceFactory;
 import jpa.model.Adresse;
 import jpa.model.Artisan;
+=======
+import jpa.model.Artisan;
+import jpa.model.Client;
+>>>>>>> b32bbe34c39c1a97baced90b7294f1016663f77c
 import jpa.model.Compte;
 import jpa.model.Service;
 import jpa.util.JpaContext;
@@ -44,6 +49,14 @@ public class TestNico {
 		
 		
 		
+<<<<<<< HEAD
+=======
+//		Compte c= new Artisan();
+//		c.setLogin("nico");
+//		c.setMdp("2006");
+//		daoCompte.insert(c);
+		
+>>>>>>> b32bbe34c39c1a97baced90b7294f1016663f77c
 		JpaContext.destroy();
 	}
 
