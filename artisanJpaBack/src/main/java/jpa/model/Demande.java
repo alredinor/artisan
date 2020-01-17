@@ -1,10 +1,35 @@
 package jpa.model;
 
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+@Entity
+@SequenceGenerator(name="seqDemande", sequenceName="seq_demande", initialValue = 1, allocationSize = 1)
 public class Demande {
 	
-	private DemandePK key;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqDemande")
 	private Long idDemande;
 	private String message;
+	
+	@ManyToOne
+	@JoinColumn(name="id_compte", foreignKey = @ForeignKey(name="demande_compte_id_fk"))
+	private Compte compte;
+	
+	@OneToOne
+	@JoinColumn(name="id_service", foreignKey = @ForeignKey(name="demande_service_id_fk"))
+	private Service service;
+	
+	@OneToOne
+	@JoinColumn(name="id_metier", foreignKey = @ForeignKey(name="demande_metier_id_fk"))
+	private Metier metier;
 	
 	public Demande() {
 	}
