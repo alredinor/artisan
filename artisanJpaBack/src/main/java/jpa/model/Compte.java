@@ -3,6 +3,7 @@ package jpa.model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -18,9 +20,11 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @SequenceGenerator(name="seqCompte", sequenceName="seq_compte", initialValue = 1, allocationSize = 1)
 @DiscriminatorColumn(name="type_compte",discriminatorType = DiscriminatorType.STRING, length=1)
+@Embeddable
 public class Compte {
 	
 	@Id
+	
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqCompte")
 	private Long idCompte;
 	@Column(name="login", length=150)

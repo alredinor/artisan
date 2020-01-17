@@ -11,92 +11,53 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="metier")
-@Embeddable
-public class Metier extends Compte
+public class Metier
 {
-	
+	@Id
+	private Long idMetier;
 	@Column(name="titre_metier", length=150)
 	private String titreMetier;
 	
-	@OneToMany
-	private Set<Service> services;
-	
-	private Integer experience;
-	
-	public Metier() 
-	{
-		super();
+	public Long getIdMetier() {
+		return idMetier;
 	}
-	
-	
-
-	public Integer getExperience() {
-		return experience;
+	public void setIdMetier(Long idMetier) {
+		this.idMetier = idMetier;
 	}
-
-
-
-	public void setExperience(Integer experience) {
-		this.experience = experience;
-	}
-
-
-
-	public Set<Service> getServices() {
-		return services;
-	}
-
-
-
-	public void setServices(Set<Service> services) {
-		this.services = services;
-	}
-
-
-
-
-	public String getTitreMetier() 
-	{
+	public String getTitreMetier() {
 		return titreMetier;
 	}
-
-	public void setTitreMetier(String titreMetier)
-	{
+	public void setTitreMetier(String titreMetier) {
 		this.titreMetier = titreMetier;
 	}
-
-
-
+	
+	public Metier() {
+	}
+	public Metier(String titreMetier) {
+		this.titreMetier = titreMetier;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((experience == null) ? 0 : experience.hashCode());
-		result = prime * result + ((services == null) ? 0 : services.hashCode());
+		int result = 1;
+		result = prime * result + ((idMetier == null) ? 0 : idMetier.hashCode());
 		result = prime * result + ((titreMetier == null) ? 0 : titreMetier.hashCode());
 		return result;
 	}
-
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Metier other = (Metier) obj;
-		if (experience == null) {
-			if (other.experience != null)
+		if (idMetier == null) {
+			if (other.idMetier != null)
 				return false;
-		} else if (!experience.equals(other.experience))
-			return false;
-		if (services == null) {
-			if (other.services != null)
-				return false;
-		} else if (!services.equals(other.services))
+		} else if (!idMetier.equals(other.idMetier))
 			return false;
 		if (titreMetier == null) {
 			if (other.titreMetier != null)
@@ -105,6 +66,9 @@ public class Metier extends Compte
 			return false;
 		return true;
 	}
+	
+	
+	
 
 	
 	
